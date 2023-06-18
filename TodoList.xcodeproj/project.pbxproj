@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00466C722A3F6D050066E6E4 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00466C712A3F6D050066E6E4 /* Enums.swift */; };
+		00466C762A3F766C0066E6E4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00466C752A3F766C0066E6E4 /* Extension.swift */; };
 		00892DDB2A3CAD3E00A9A510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00892DDA2A3CAD3E00A9A510 /* AppDelegate.swift */; };
 		00892DDD2A3CAD3E00A9A510 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00892DDC2A3CAD3E00A9A510 /* SceneDelegate.swift */; };
 		00892DDF2A3CAD3E00A9A510 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00892DDE2A3CAD3E00A9A510 /* ViewController.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00466C712A3F6D050066E6E4 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		00466C752A3F766C0066E6E4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		00892DD72A3CAD3E00A9A510 /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00892DDA2A3CAD3E00A9A510 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00892DDC2A3CAD3E00A9A510 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +71,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00466C732A3F762D0066E6E4 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				00892DDA2A3CAD3E00A9A510 /* AppDelegate.swift */,
+				00892DDC2A3CAD3E00A9A510 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		00892DCE2A3CAD3E00A9A510 = {
 			isa = PBXGroup;
 			children = (
@@ -88,15 +101,16 @@
 		00892DD92A3CAD3E00A9A510 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				00466C732A3F762D0066E6E4 /* Delegates */,
+				00466C712A3F6D050066E6E4 /* Enums.swift */,
 				00892DFD2A3CAF2D00A9A510 /* TodoItem.swift */,
+				00466C752A3F766C0066E6E4 /* Extension.swift */,
 				00892DFF2A3CAF6F00A9A510 /* FileCache.swift */,
 				00892DE02A3CAD3E00A9A510 /* Main.storyboard */,
 				00892DDE2A3CAD3E00A9A510 /* ViewController.swift */,
 				00892DE32A3CAD3F00A9A510 /* Assets.xcassets */,
 				00892DE52A3CAD3F00A9A510 /* LaunchScreen.storyboard */,
 				00892DE82A3CAD3F00A9A510 /* Info.plist */,
-				00892DDA2A3CAD3E00A9A510 /* AppDelegate.swift */,
-				00892DDC2A3CAD3E00A9A510 /* SceneDelegate.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -215,8 +229,10 @@
 			files = (
 				00892DDF2A3CAD3E00A9A510 /* ViewController.swift in Sources */,
 				00892DDB2A3CAD3E00A9A510 /* AppDelegate.swift in Sources */,
+				00466C762A3F766C0066E6E4 /* Extension.swift in Sources */,
 				00892DFE2A3CAF2D00A9A510 /* TodoItem.swift in Sources */,
 				00892E002A3CAF6F00A9A510 /* FileCache.swift in Sources */,
+				00466C722A3F6D050066E6E4 /* Enums.swift in Sources */,
 				00892DDD2A3CAD3E00A9A510 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

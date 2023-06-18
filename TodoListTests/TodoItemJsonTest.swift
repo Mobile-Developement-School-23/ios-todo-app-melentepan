@@ -6,48 +6,48 @@ class TodoItemJsonTests: XCTestCase {
         let importance = Importance.important
         let todoItem = TodoItem(text: "Test", importance: importance, deadlineDate: nil, isCompleted: false , creationDate: Date(), modificationDate: nil )
         let json = todoItem.json as? [String:Any]
-        XCTAssertEqual(json?["importance"] as? String , importance.rawValue)
+        XCTAssertEqual(json?[Keys.importance.rawValue] as? String , importance.rawValue)
     }
     
     func testJsonImportanceUsual() {
         let todoItem = TodoItem(text: "Test" , importance: .usual , deadlineDate: nil , isCompleted: false , creationDate: Date() , modificationDate: nil )
         let json = todoItem.json as? [String:Any]
-        XCTAssertNil(json?["importance"])
+        XCTAssertNil(json?[Keys.importance.rawValue])
     }
     
     func testJsonDeadlineNil() {
         let todoItem = TodoItem(text: "Test" , importance: .usual , deadlineDate: nil , isCompleted: false , creationDate: Date() , modificationDate: nil )
         let json = todoItem.json as? [String:Any]
-        XCTAssertNil(json?["deadlineDate"])
+        XCTAssertNil(json?[Keys.deadlineDate.rawValue])
     }
     
     func testJsonDeadlineNotNil() {
         let todoItem = TodoItem(text: "Test" , importance: .usual , deadlineDate: Date() , isCompleted: false , creationDate: Date() , modificationDate: nil )
         let json = todoItem.json as? [String:Any]
-        XCTAssertNotNil(json?["deadlineDate"])
+        XCTAssertNotNil(json?[Keys.deadlineDate.rawValue])
     }
     
     func testJsonModificationNil() {
         let todoItem = TodoItem(text: "Test" , importance: .usual , deadlineDate: nil , isCompleted: false , creationDate: Date() , modificationDate: nil )
         let json = todoItem.json as? [String:Any]
-        XCTAssertNil(json?["modificationDate"])
+        XCTAssertNil(json?[Keys.modificationDate.rawValue])
     }
     
     func testJsonModificationNotNil() {
         let todoItem = TodoItem(text: "Test" , importance: .usual , deadlineDate: nil, isCompleted: false , creationDate: Date() , modificationDate: Date() )
         let json = todoItem.json as? [String:Any]
-        XCTAssertNotNil(json?["modificationDate"])
+        XCTAssertNotNil(json?[Keys.modificationDate.rawValue])
     }
     
     
     func testParseWithoutImportance() {
         let json:[String:Any] = [
-            "id":"test-id",
-            "text":"Test",
-            "isCompleted":false,
-            "creationDate":Date().timeIntervalSince1970,
-            "deadlineDate":Date().timeIntervalSince1970,
-            "modificationDate":Date().timeIntervalSince1970,
+            Keys.id.rawValue:"test-id",
+            Keys.text.rawValue:"Test",
+            Keys.isCompleted.rawValue:false,
+            Keys.creationDate.rawValue:Date().timeIntervalSince1970,
+            Keys.deadlineDate.rawValue:Date().timeIntervalSince1970,
+            Keys.modificationDate.rawValue:Date().timeIntervalSince1970
         ]
         let todoItem = TodoItem.parse(json: json)
         XCTAssertEqual(todoItem?.importance, Importance.usual)
@@ -56,11 +56,11 @@ class TodoItemJsonTests: XCTestCase {
     func testParseDeadlineNotNil(){
         let date = Date()
         let json:[String:Any]=[
-            "id":"test-id",
-            "text":"Test",
-            "isCompleted":false,
-            "creationDate":date.timeIntervalSince1970,
-            "deadlineDate":date.timeIntervalSince1970
+            Keys.id.rawValue:"test-id",
+            Keys.text.rawValue:"Test",
+            Keys.isCompleted.rawValue:false,
+            Keys.creationDate.rawValue:date.timeIntervalSince1970,
+            Keys.deadlineDate.rawValue:date.timeIntervalSince1970
         ]
         let todoItem = TodoItem.parse(json:json)
         XCTAssertNotNil(todoItem?.deadlineDate)
@@ -69,23 +69,23 @@ class TodoItemJsonTests: XCTestCase {
     func testParseDeadlineEqual() {
         let date = Date()
         let json: [String: Any] = [
-            "id": "test-id",
-            "text": "Test",
-            "isCompleted": false,
-            "creationDate": date.timeIntervalSince1970,
-            "deadlineDate": date.timeIntervalSince1970
+            Keys.id.rawValue:"test-id",
+            Keys.text.rawValue:"Test",
+            Keys.isCompleted.rawValue:false,
+            Keys.creationDate.rawValue:date.timeIntervalSince1970,
+            Keys.deadlineDate.rawValue:date.timeIntervalSince1970
         ]
         let todoItem = TodoItem.parse(json: json)
-        XCTAssertEqual(todoItem?.deadlineDate, date)
+        XCTAssertEqual(todoItem?.deadlineDate?.timeIntervalSince1970, date.timeIntervalSince1970)
     }
     
     
     func testParseModificationNil(){
         let json:[String:Any]=[
-            "id":"test-id",
-            "text":"Test",
-            "isCompleted":false,
-            "creationDate":Date().timeIntervalSince1970
+            Keys.id.rawValue:"test-id",
+            Keys.text.rawValue:"Test",
+            Keys.isCompleted.rawValue:false,
+            Keys.creationDate.rawValue:Date().timeIntervalSince1970
         ]
         let todoItem = TodoItem.parse(json:json)
         XCTAssertNil(todoItem?.modificationDate)
@@ -94,11 +94,11 @@ class TodoItemJsonTests: XCTestCase {
     func testParseModificationNotNil(){
         let date = Date()
         let json:[String:Any]=[
-            "id":"test-id",
-            "text":"Test",
-            "isCompleted":false,
-            "creationDate":date.timeIntervalSince1970,
-            "modificationDate":date.timeIntervalSince1970
+            Keys.id.rawValue:"test-id",
+            Keys.text.rawValue:"Test",
+            Keys.isCompleted.rawValue:false,
+            Keys.creationDate.rawValue:date.timeIntervalSince1970,
+            Keys.modificationDate.rawValue:date.timeIntervalSince1970
         ]
         let todoItem=TodoItem.parse(json:json)
         XCTAssertNotNil(todoItem?.modificationDate)
@@ -107,14 +107,14 @@ class TodoItemJsonTests: XCTestCase {
     func testParseModificationEqual(){
         let date = Date()
         let json:[String:Any]=[
-            "id":"test-id",
-            "text":"Test",
-            "isCompleted":false,
-            "creationDate":date.timeIntervalSince1970,
-            "modificationDate":date.timeIntervalSince1970
+            Keys.id.rawValue:"test-id",
+            Keys.text.rawValue:"Test",
+            Keys.isCompleted.rawValue:false,
+            Keys.creationDate.rawValue:date.timeIntervalSince1970,
+            Keys.modificationDate.rawValue:date.timeIntervalSince1970
         ]
         let todoItem = TodoItem.parse(json:json)
-        XCTAssertEqual(todoItem?.modificationDate, date)
+        XCTAssertEqual(todoItem?.modificationDate?.timeIntervalSince1970, date.timeIntervalSince1970)
     }
 }
 

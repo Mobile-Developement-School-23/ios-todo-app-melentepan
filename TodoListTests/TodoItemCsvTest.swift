@@ -7,41 +7,41 @@ class TodoItemCsvTests: XCTestCase {
         let importance = Importance.important
         let todoItem = TodoItem(text: "Test", importance: importance, deadlineDate: nil, isCompleted: false, creationDate: Date(), modificationDate: nil )
         let csv = todoItem.csv
-        XCTAssertTrue(csv.contains(importance.rawValue))
+        XCTAssertEqual(csv.components(separatedBy: TodoItem.separator)[2], importance.rawValue)
     }
     
     func testCsvImportanceUsual() {
         let todoItem = TodoItem(text: "Test", importance: .usual, deadlineDate: nil, isCompleted: false, creationDate: Date(), modificationDate: nil )
         let csv = todoItem.csv
-        XCTAssertFalse(csv.contains(Importance.usual.rawValue))
+        XCTAssertEqual(csv.components(separatedBy: TodoItem.separator)[2], "")
     }
     
     func testCsvDeadlineNil() {
         let todoItem = TodoItem(text: "Test", importance: .usual, deadlineDate: nil, isCompleted: false, creationDate: Date(), modificationDate: nil )
         let csv = todoItem.csv
-        XCTAssertFalse(csv.contains(TodoItem.separator + String(Date().timeIntervalSince1970)))
+        XCTAssertEqual(csv.components(separatedBy: TodoItem.separator)[3], "")
     }
     
     func testCsvDeadlineNotNil() {
         let date = Date()
         let todoItem = TodoItem(text: "Test", importance: .usual, deadlineDate: date, isCompleted: false, creationDate: Date(), modificationDate: nil )
         let csv = todoItem.csv
-        XCTAssertTrue(csv.contains(TodoItem.separator + String(date.timeIntervalSince1970)))
+        XCTAssertEqual(csv.components(separatedBy: TodoItem.separator)[3], String(date.timeIntervalSince1970))
     }
     
     func testCsvModificationNil() {
         let todoItem = TodoItem(text: "Test", importance: .usual, deadlineDate: nil, isCompleted: false, creationDate: Date(), modificationDate: nil )
         let csv = todoItem.csv
-        XCTAssertFalse(csv.contains(TodoItem.separator + String(Date().timeIntervalSince1970)))
+        XCTAssertEqual(csv.components(separatedBy: TodoItem.separator)[6], "")
     }
     
     func testCsvModificationNotNil() {
         let date = Date()
         let todoItem = TodoItem(text: "Test", importance: .usual, deadlineDate:nil, isCompleted:false, creationDate:date, modificationDate:date)
         let csv = todoItem.csv
-        XCTAssertTrue(csv.contains(TodoItem.separator + String(date.timeIntervalSince1970)))
+        print(csv)
+        XCTAssertEqual(csv.components(separatedBy: TodoItem.separator)[6], String(date.timeIntervalSince1970))
     }
-    
     
     func testParseWithoutImportance() {
         let date = Date()
@@ -63,7 +63,7 @@ class TodoItemCsvTests: XCTestCase {
         let date = Date()
         let csv = "test-id\(TodoItem.separator)Test\(TodoItem.separator)\(TodoItem.separator)\(date.timeIntervalSince1970)\(TodoItem.separator)false\(TodoItem.separator)\(date.timeIntervalSince1970)\(TodoItem.separator)\(date.timeIntervalSince1970)"
         let todoItem = TodoItem.parse(csv:csv)
-        XCTAssertEqual(todoItem?.deadlineDate, date)
+        XCTAssertEqual(todoItem?.deadlineDate?.timeIntervalSince1970, date.timeIntervalSince1970)
     }
     
     func testParseModificationNil(){
@@ -84,6 +84,6 @@ class TodoItemCsvTests: XCTestCase {
         let date = Date()
         let csv = "test-id\(TodoItem.separator)Test\(TodoItem.separator)\(TodoItem.separator)\(date.timeIntervalSince1970)\(TodoItem.separator)false\(TodoItem.separator)\(date.timeIntervalSince1970)\(TodoItem.separator)\(date.timeIntervalSince1970)"
         let todoItem = TodoItem.parse(csv:csv)
-        XCTAssertEqual(todoItem?.modificationDate, date)
+        XCTAssertEqual(todoItem?.modificationDate?.timeIntervalSince1970, date.timeIntervalSince1970)
     }
 }
