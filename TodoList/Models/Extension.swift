@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 
 extension TodoItem {
@@ -106,5 +107,27 @@ extension TodoItem {
         
         
         return TodoItem(id: id, text: text, importance: importance, deadlineDate: deadlineDate, isCompleted: isCompleted, creationDate: Date(timeIntervalSince1970: creationDateTimestamp), modificationDate: modificationDate)
+    }
+}
+
+
+extension TodoItemViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+        textView.textColor = .black
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Что надо сделать?"
+            textView.textColor = .lightGray
+        } else {
+            saveButton.isEnabled = true
+        }
+    }
+    
+    func textViewShouldReturn(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
     }
 }
