@@ -15,3 +15,8 @@ enum Importance: String {
     case usual = "обычная"
     case important = "важная"
 }
+
+enum StatusVC {
+    case creation
+    case change
+}
