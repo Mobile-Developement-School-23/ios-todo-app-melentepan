@@ -2,7 +2,7 @@ import Foundation
 
 class FileCache {
     private(set) var todoItems: [TodoItem] = []
-    
+
     func add(item: TodoItem) {
         if let index = todoItems.firstIndex(where: { $0.id == item.id }) {
             todoItems[index] = item
@@ -10,11 +10,11 @@ class FileCache {
             todoItems.append(item)
         }
     }
-    
+
     func remove(id: String) {
         todoItems.removeAll(where: { $0.id == id })
     }
-    
+
     func saveJSON() {
         let fileManager = FileManager.default
         guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
@@ -29,14 +29,14 @@ class FileCache {
             print("jsonDataWriteError")
         }
     }
-    
+
     func loadJSON(from fileURL: URL) throws {
         let data = try Data(contentsOf: fileURL)
         let json = try JSONSerialization.jsonObject(with: data)
         guard let jsonArray = json as? [[String: Any]] else { return }
         todoItems = jsonArray.compactMap { TodoItem.parse(json: $0) }
     }
-    
+
     func saveCSV() {
         let fileManager = FileManager.default
         guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
