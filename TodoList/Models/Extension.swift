@@ -4,20 +4,22 @@ import CocoaLumberjackSwift
 
 extension TodoItem {
     var json: Any {
-        var jsonDict: [String: Any] = [
-            Keys.id.rawValue: id,
-            Keys.text.rawValue: text,
-            Keys.isCompleted.rawValue: isCompleted,
-            Keys.creationDate.rawValue: creationDate.timeIntervalSince1970
-        ]
-        if importance.rawValue != Importance.usual.rawValue {
-            jsonDict[Keys.importance.rawValue] = importance.rawValue
+        var jsonDict: [String: Any] = [:]
+        jsonDict[Keys.id.rawValue] = self.id
+        jsonDict[Keys.text.rawValue] = self.text
+        jsonDict[Keys.importance.rawValue] = importance.rawValue
+        jsonDict[Keys.isCompleted.rawValue] = self.isCompleted
+        jsonDict[Keys.creationDate.rawValue] = Int(creationDate.timeIntervalSince1970)
+        jsonDict[Keys.modificationDate.rawValue] = self.modificationDate
+        jsonDict[Keys.lastUpdatedBy.rawValue] = "iOS"
+
+        if let deadlineDate = self.deadlineDate {
+            jsonDict[Keys.deadlineDate.rawValue] = Int(deadlineDate.timeIntervalSince1970)
         }
-        if let deadlineDate = deadlineDate {
-            jsonDict[Keys.deadlineDate.rawValue] = deadlineDate.timeIntervalSince1970
-        }
-        if let modificationDate = modificationDate {
-            jsonDict[Keys.modificationDate.rawValue] = modificationDate.timeIntervalSince1970
+        if let modificationDate = self.modificationDate {
+            jsonDict[Keys.modificationDate.rawValue] = Int(modificationDate.timeIntervalSince1970)
+        } else {
+            jsonDict[Keys.modificationDate.rawValue] = Int(creationDate.timeIntervalSince1970)
         }
         return jsonDict
     }
@@ -113,8 +115,10 @@ extension TodoItem {
 
 extension TodoItemViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
-        textView.textColor = .black
+        if textView.textColor == .lightGray {
+            textView.text = ""
+            textView.textColor = .black
+        }
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -187,6 +191,7 @@ extension MainViewController: UITableViewDelegate {
         }
 
         let deleteAction = UIContextualAction(style: .normal, title: "") { (_, _, completionHandler) in
+            self.deleteToDoItemFromServer(todoItem: cell.todoItem)
             self.fileCache.remove(id: cell.todoItem.id)
 
             UIView.animate(withDuration: 0.3) {
@@ -265,3 +270,68 @@ extension MainViewController: UITableViewDelegate {
         }
     }
 }
+
+extension URLSession {
+    func dataTask(for urlRequest: URLRequest) async throws -> (Data, URLResponse) {
+        var currentDataTask: URLSessionDataTask?
+
+        return try await withTaskCancellationHandler {
+            return try await withCheckedThrowingContinuation { continuation in
+                currentDataTask = URLSession.shared.dataTask(with: urlRequest) { data, responce, error in
+                    if let error = error {
+                        continuation.resume(throwing: error)
+                    } else if let data = data, let responce = responce {
+                        continuation.resume(returning: (data, responce))
+                    } else {
+                        continuation.resume(throwing: NSError(domain: "invalidData", code: 322)
+                        )
+                    }
+                }
+                currentDataTask?.resume()
+            }
+        } onCancel: { [weak currentDataTask] in
+            currentDataTask?.cancel()
+        }
+    }
+}
+
+    extension DefaultNetworkingService {
+        func createRequest(subdirectory: String, method: HTTPMethods) throws -> URLRequest {
+            guard let url = URL(string: "\(baseURL)\(subdirectory)") else { throw NetworkingError.urlError }
+            var request = URLRequest(url: url)
+            request.httpMethod = method.rawValue.uppercased()
+            if method != .get {
+                request.addValue("\(self.revision)", forHTTPHeaderField: "X-Last-Known-Revision")
+            }
+            request.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+            DDLogInfo("Create \(method.rawValue.uppercased()) request")
+            return request
+        }
+
+        func parseAllTodoItemsFromData(data: Data) throws -> [TodoItem] {
+            guard let jsonArray = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                  let revision = jsonArray["revision"] as? Int,
+                  let list = jsonArray["list"] as? [[String: Any]]
+            else {
+                throw NetworkingError.decodeError
+            }
+            var todoItemsFromData: [TodoItem] = []
+            for item in list {
+                guard let todoItem = TodoItem.parse(json: item) else { throw NetworkingError.decodeError }
+                todoItemsFromData.append(todoItem)
+            }
+            self.revision = revision
+            return todoItemsFromData
+        }
+
+        func parseOneTodoItemFromData(data: Data) throws -> TodoItem {
+            guard let jsonArray = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                  let revision = jsonArray["revision"] as? Int,
+                  let element = jsonArray["element"] as? [String: Any],
+                  let todoItem = TodoItem.parse(json: element)
+            else { throw URLError(.cannotDecodeContentData) }
+            self.revision = revision
+            DDLogInfo("revision = \(self.revision)")
+            return todoItem
+        }
+    }

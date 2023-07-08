@@ -4,6 +4,7 @@ import CocoaLumberjackSwift
 class RootViewController: UINavigationController {
 
     let fileCache = FileCache()
+    let networkingService = DefaultNetworkingService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +17,8 @@ class RootViewController: UINavigationController {
 
         let myViewController = MainViewController()
         myViewController.fileCache = fileCache
+        myViewController.networkingService = networkingService
+        myViewController.loadToDoItemsFromServer()
         viewControllers = [myViewController]
     }
 }

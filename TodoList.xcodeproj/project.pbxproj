@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00228ADC2A575C42008FEBD6 /* DefaultNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00228ADB2A575C42008FEBD6 /* DefaultNetworkingService.swift */; };
 		00415D382A43848200D1188E /* TodoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00415D372A43848200D1188E /* TodoItemViewController.swift */; };
 		00466C722A3F6D050066E6E4 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00466C712A3F6D050066E6E4 /* Enums.swift */; };
 		00466C762A3F766C0066E6E4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00466C752A3F766C0066E6E4 /* Extension.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00228ADB2A575C42008FEBD6 /* DefaultNetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkingService.swift; sourceTree = "<group>"; };
 		00415D372A43848200D1188E /* TodoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemViewController.swift; sourceTree = "<group>"; };
 		00466C712A3F6D050066E6E4 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		00466C752A3F766C0066E6E4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				00892DFF2A3CAF6F00A9A510 /* FileCache.swift */,
 				00466C752A3F766C0066E6E4 /* Extension.swift */,
 				00466C712A3F6D050066E6E4 /* Enums.swift */,
+				00228ADB2A575C42008FEBD6 /* DefaultNetworkingService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,11 +223,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00892DEB2A3CAD3F00A9A510 /* Build configuration list for PBXNativeTarget "TodoList" */;
 			buildPhases = (
-				00D58CCA2A4F6E3500A130F6 /* ShellScript */,
 				17778FDE0B12EB98FCA03A4D /* [CP] Check Pods Manifest.lock */,
 				00892DD32A3CAD3E00A9A510 /* Sources */,
 				00892DD42A3CAD3E00A9A510 /* Frameworks */,
 				00892DD52A3CAD3E00A9A510 /* Resources */,
+				00D58CCA2A4F6E3500A130F6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -394,6 +397,7 @@
 				00466C762A3F766C0066E6E4 /* Extension.swift in Sources */,
 				0077F22F2A4A779A001EEE5C /* TableViewCell.swift in Sources */,
 				00C69B5D2A4509EA00B894D9 /* ImportanceView.swift in Sources */,
+				00228ADC2A575C42008FEBD6 /* DefaultNetworkingService.swift in Sources */,
 				00415D382A43848200D1188E /* TodoItemViewController.swift in Sources */,
 				00892DFE2A3CAF2D00A9A510 /* TodoItem.swift in Sources */,
 				00C69B632A45357500B894D9 /* CalendarView.swift in Sources */,
@@ -495,6 +499,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Debug;
 		};
@@ -548,6 +553,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
