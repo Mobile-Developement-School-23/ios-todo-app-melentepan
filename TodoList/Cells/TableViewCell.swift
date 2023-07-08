@@ -86,10 +86,10 @@ class TableViewCell: UITableViewCell {
             bottomImageView.heightAnchor.constraint(equalToConstant: 12),
             bottomImageView.widthAnchor.constraint(equalToConstant: 13),
             bottomImageView.centerYAnchor.constraint(equalTo: bottomStackView.centerYAnchor),
-            bottomImageView.leadingAnchor.constraint(equalTo: cellImageView.trailingAnchor, constant: 12),
-            bottomImageView.trailingAnchor.constraint(equalTo: bottomLabel.leadingAnchor, constant: -2)
+            bottomImageView.leadingAnchor.constraint(equalTo: cellImageView.trailingAnchor, constant: 12)
         ])
     }
+
     func setText() {
         var importanceSym = ""
         if todoItem.importance == .important {

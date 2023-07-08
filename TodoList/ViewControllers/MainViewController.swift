@@ -8,7 +8,10 @@ class MainViewController: UIViewController {
     let plusButton = UIButton()
 
     var completeIsShow = true
+    var isDirty = false
+
     var fileCache = FileCache()
+    var networkingService = DefaultNetworkingService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,4 +166,74 @@ class MainViewController: UIViewController {
         tableView.reloadData()
     }
 
+    func addToDoItemOnServer(todoItem: TodoItem) {
+        Task {
+            do {
+                _ = try await networkingService.postTodoItemElement(todoItemLocal: todoItem)
+                isDirty = false
+            } catch {
+                isDirty = true
+            }
+        }
+    }
+
+    func loadToDoItemsFromServer() {
+        Task {
+            do {
+                let newTodoItems = try await networkingService.getTodoItemList()
+                for item in newTodoItems {
+                    fileCache.add(item: item)
+                }
+                tableView.reloadData()
+                labelCountOfComplete.text = "Выполнено — \(self.fileCache.todoItems.filter({$0.isCompleted == true}).count)"
+                isDirty = false
+            } catch {
+                isDirty = true
+            }
+        }
+    }
+
+    func deleteToDoItemFromServer(todoItem: TodoItem) {
+        Task {
+            do {
+                _ = try await networkingService.deleteTodoItemElement(id: todoItem.id)
+                isDirty = false
+            } catch {
+                isDirty = true
+            }
+        }
+    }
+
+    func changeToDoItemsOnServer() {
+        Task {
+            do {
+                _ = try await networkingService.patchTodoItemsList(todoItemsLocal: fileCache.todoItems)
+                isDirty = false
+            } catch {
+                isDirty = true
+            }
+        }
+    }
+
+    func loadOneToDoItemFromServer(todoItem: TodoItem) {
+        Task {
+            do {
+                _ = try await networkingService.getTodoItemElement(id: todoItem.id)
+                isDirty = false
+            } catch {
+                isDirty = true
+            }
+        }
+    }
+
+    func changeOneToDoItemOnServer(todoItem: TodoItem) {
+        Task {
+            do {
+                _ = try await networkingService.putTodoItemElement(todoItemLocal: todoItem)
+                isDirty = false
+            } catch {
+                isDirty = true
+            }
+        }
+    }
 }

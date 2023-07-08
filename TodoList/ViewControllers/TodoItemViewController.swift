@@ -146,7 +146,6 @@ class TodoItemViewController: UIViewController {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isScrollEnabled = false
         NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 16),
             textView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 16),
             textView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -16),
             textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 120)
@@ -225,12 +224,14 @@ class TodoItemViewController: UIViewController {
             DDLogDebug("Обновление todoItem")
             if let todoItem = todoItem {
                 let updatedTodoItem = TodoItem(id: todoItem.id, text: text!, importance: importance, deadlineDate: deadlineDate, isCompleted: todoItem.isCompleted, modificationDate: modificationDate)
+                mainVC.changeOneToDoItemOnServer(todoItem: updatedTodoItem)
                 mainVC.fileCache.add(item: updatedTodoItem)
             }
         } else {
             DDLogDebug("Создание todoItem")
             let isCompleted = false
             let todoItem = TodoItem(text: text!, importance: importance, deadlineDate: deadlineDate, isCompleted: isCompleted, modificationDate: modificationDate)
+            mainVC.addToDoItemOnServer(todoItem: todoItem)
             mainVC.fileCache.add(item: todoItem)
         }
 
