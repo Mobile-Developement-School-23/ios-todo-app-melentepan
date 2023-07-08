@@ -50,7 +50,7 @@ extension TodoItem {
         guard let jsonDict = json as? [String: Any] else { return nil }
 
         guard let id = jsonDict[Keys.id.rawValue] as? String,
-              let text = jsonDict[Keys.id.rawValue] as? String,
+              let text = jsonDict[Keys.text.rawValue] as? String,
               let isCompleted = jsonDict[Keys.isCompleted.rawValue] as? Bool,
               let creationDateTimestamp = jsonDict[Keys.creationDate.rawValue] as? TimeInterval
         else { return nil }
