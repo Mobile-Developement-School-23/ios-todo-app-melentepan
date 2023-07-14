@@ -1,4 +1,5 @@
 import UIKit
+import SQLite
 
 class MainViewController: UIViewController {
 
@@ -12,6 +13,7 @@ class MainViewController: UIViewController {
 
     var fileCache = FileCache()
     var networkingService = DefaultNetworkingService()
+    var dataBase: Connection?
 
     override func viewDidLoad() {
         super.viewDidLoad()

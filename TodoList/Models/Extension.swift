@@ -1,8 +1,24 @@
 import Foundation
 import UIKit
 import CocoaLumberjackSwift
+import SQLite
 
 extension TodoItem {
+    var sqlReplaceStatement: String {
+        let todoItemsTable = Table("todoItems")
+        let insert = todoItemsTable.insert(
+           Expression<String>(Keys.id.rawValue) <- self.id,
+           Expression<String>(Keys.text.rawValue) <- self.text,
+           Expression<String>(Keys.importance.rawValue) <- self.importance.rawValue,
+           Expression<Bool>(Keys.isCompleted.rawValue) <- self.isCompleted,
+           Expression<Int>(Keys.creationDate.rawValue) <- Int(self.creationDate.timeIntervalSince1970),
+           Expression<String>(Keys.lastUpdatedBy.rawValue) <- "iOS",
+           Expression<Int?>(Keys.deadlineDate.rawValue) <- self.deadlineDate != nil ? Int(self.deadlineDate?.timeIntervalSince1970 ?? 0) : nil,
+           Expression<Int?>(Keys.modificationDate.rawValue) <- self.modificationDate != nil ? Int(self.modificationDate?.timeIntervalSince1970 ?? 0) : nil
+        )
+        return insert.description
+    }
+
     var json: Any {
         var jsonDict: [String: Any] = [:]
         jsonDict[Keys.id.rawValue] = self.id
@@ -10,7 +26,6 @@ extension TodoItem {
         jsonDict[Keys.importance.rawValue] = importance.rawValue
         jsonDict[Keys.isCompleted.rawValue] = self.isCompleted
         jsonDict[Keys.creationDate.rawValue] = Int(creationDate.timeIntervalSince1970)
-        jsonDict[Keys.modificationDate.rawValue] = self.modificationDate
         jsonDict[Keys.lastUpdatedBy.rawValue] = "iOS"
 
         if let deadlineDate = self.deadlineDate {
@@ -193,6 +208,7 @@ extension MainViewController: UITableViewDelegate {
         let deleteAction = UIContextualAction(style: .normal, title: "") { (_, _, completionHandler) in
             self.deleteToDoItemFromServer(todoItem: cell.todoItem)
             self.fileCache.remove(id: cell.todoItem.id)
+            if let dataBaseUnwrap = self.dataBase { self.fileCache.delete(item: cell.todoItem, dataBase: dataBaseUnwrap) }
 
             UIView.animate(withDuration: 0.3) {
                 cell.layer.opacity = 0
@@ -236,6 +252,8 @@ extension MainViewController: UITableViewDelegate {
                 fatalError("The cell at the given index path is not an instance of TableViewCell.")
             }
             cell.setComplete()
+            self.changeOneToDoItemOnServer(todoItem: cell.todoItem)
+            if let dataBaseUnwrap = self.dataBase { self.fileCache.update(item: cell.todoItem, dataBase: dataBaseUnwrap) }
             self.labelCountOfComplete.text = "Выполнено — \(self.fileCache.todoItems.filter({$0.isCompleted == true}).count)"
 
             DDLogDebug("Изменение isCompleted ячейки \(indexPath.row)")

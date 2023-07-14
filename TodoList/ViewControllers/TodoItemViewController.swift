@@ -220,12 +220,15 @@ class TodoItemViewController: UIViewController {
         let deadlineDate = deadlineView.switchControl.isOn ? calendarView.calendarView.date : nil
         let modificationDate = Date()
 
+        guard let dataBase = mainVC.dataBase else {return}
+
         if statusOfVC == .change {
             DDLogDebug("Обновление todoItem")
             if let todoItem = todoItem {
                 let updatedTodoItem = TodoItem(id: todoItem.id, text: text!, importance: importance, deadlineDate: deadlineDate, isCompleted: todoItem.isCompleted, modificationDate: modificationDate)
                 mainVC.changeOneToDoItemOnServer(todoItem: updatedTodoItem)
                 mainVC.fileCache.add(item: updatedTodoItem)
+                mainVC.fileCache.update(item: updatedTodoItem, dataBase: dataBase)
             }
         } else {
             DDLogDebug("Создание todoItem")
@@ -233,9 +236,8 @@ class TodoItemViewController: UIViewController {
             let todoItem = TodoItem(text: text!, importance: importance, deadlineDate: deadlineDate, isCompleted: isCompleted, modificationDate: modificationDate)
             mainVC.addToDoItemOnServer(todoItem: todoItem)
             mainVC.fileCache.add(item: todoItem)
+            mainVC.fileCache.insert(item: todoItem, dataBase: dataBase)
         }
-
-        mainVC.fileCache.saveJSON()
         mainVC.tableView.reloadData()
         dismiss(animated: true)
     }
