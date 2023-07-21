@@ -14,6 +14,12 @@
 		00466C722A3F6D050066E6E4 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00466C712A3F6D050066E6E4 /* Enums.swift */; };
 		00466C762A3F766C0066E6E4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00466C752A3F766C0066E6E4 /* Extension.swift */; };
 		006A56B12A61ADCA00CE16C1 /* TodoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 006A56AF2A61ADCA00CE16C1 /* TodoList.xcdatamodeld */; };
+		006CD4912A68302400B63924 /* SwiftUITodoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006CD4902A68302400B63924 /* SwiftUITodoListApp.swift */; };
+		006CD4932A68302400B63924 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006CD4922A68302400B63924 /* ContentView.swift */; };
+		006CD4982A68302500B63924 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 006CD4972A68302500B63924 /* Preview Assets.xcassets */; };
+		006EE5DF2A69BB3700953B7C /* TodoItemRowSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EE5DE2A69BB3700953B7C /* TodoItemRowSUI.swift */; };
+		006EE5E12A69BB9B00953B7C /* TodoItemForSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EE5E02A69BB9B00953B7C /* TodoItemForSUI.swift */; };
+		006EE5E32A69BBBC00953B7C /* EnumsSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EE5E22A69BBBC00953B7C /* EnumsSUI.swift */; };
 		00739D832A4F63C80029BAD4 /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 00739D822A4F63C80029BAD4 /* CocoaLumberjackSwift */; };
 		0077F22C2A4A1EDD001EEE5C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077F22B2A4A1EDD001EEE5C /* MainViewController.swift */; };
 		0077F22F2A4A779A001EEE5C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077F22E2A4A779A001EEE5C /* TableViewCell.swift */; };
@@ -30,6 +36,8 @@
 		00892E002A3CAF6F00A9A510 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00892DFF2A3CAF6F00A9A510 /* FileCache.swift */; };
 		00892E022A3CB76700A9A510 /* TodoItemJsonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00892E012A3CB76700A9A510 /* TodoItemJsonTest.swift */; };
 		00892E042A3CB78C00A9A510 /* TodoItemCsvTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00892E032A3CB78C00A9A510 /* TodoItemCsvTest.swift */; };
+		00C1FA912A6B3EF60019830F /* CustomDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C1FA902A6B3EF60019830F /* CustomDivider.swift */; };
+		00C1FA922A6B4AD30019830F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00892DE32A3CAD3F00A9A510 /* Assets.xcassets */; };
 		00C69B5D2A4509EA00B894D9 /* ImportanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C69B5C2A4509EA00B894D9 /* ImportanceView.swift */; };
 		00C69B5F2A4509FE00B894D9 /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C69B5E2A4509FE00B894D9 /* DeadlineView.swift */; };
 		00C69B612A45304700B894D9 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C69B602A45304700B894D9 /* SeparatorView.swift */; };
@@ -56,6 +64,13 @@
 		00466C712A3F6D050066E6E4 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		00466C752A3F766C0066E6E4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		006A56B02A61ADCA00CE16C1 /* TodoList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodoList.xcdatamodel; sourceTree = "<group>"; };
+		006CD48E2A68302400B63924 /* SwiftUITodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUITodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		006CD4902A68302400B63924 /* SwiftUITodoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITodoListApp.swift; sourceTree = "<group>"; };
+		006CD4922A68302400B63924 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		006CD4972A68302500B63924 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		006EE5DE2A69BB3700953B7C /* TodoItemRowSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemRowSUI.swift; sourceTree = "<group>"; };
+		006EE5E02A69BB9B00953B7C /* TodoItemForSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemForSUI.swift; sourceTree = "<group>"; };
+		006EE5E22A69BBBC00953B7C /* EnumsSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumsSUI.swift; sourceTree = "<group>"; };
 		0077F22B2A4A1EDD001EEE5C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0077F22E2A4A779A001EEE5C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		0077F2302A4A8C4F001EEE5C /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
@@ -73,6 +88,7 @@
 		00892DFF2A3CAF6F00A9A510 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		00892E012A3CB76700A9A510 /* TodoItemJsonTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemJsonTest.swift; sourceTree = "<group>"; };
 		00892E032A3CB78C00A9A510 /* TodoItemCsvTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemCsvTest.swift; sourceTree = "<group>"; };
+		00C1FA902A6B3EF60019830F /* CustomDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDivider.swift; sourceTree = "<group>"; };
 		00C69B5C2A4509EA00B894D9 /* ImportanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceView.swift; sourceTree = "<group>"; };
 		00C69B5E2A4509FE00B894D9 /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
 		00C69B602A45304700B894D9 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
@@ -86,6 +102,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		006CD48B2A68302400B63924 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00892DD42A3CAD3E00A9A510 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -148,6 +171,36 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		006CD48F2A68302400B63924 /* SwiftUITodoList */ = {
+			isa = PBXGroup;
+			children = (
+				006EE5DD2A69BB1C00953B7C /* Views */,
+				006CD4902A68302400B63924 /* SwiftUITodoListApp.swift */,
+				006CD4962A68302500B63924 /* Preview Content */,
+				006EE5E02A69BB9B00953B7C /* TodoItemForSUI.swift */,
+				006EE5E22A69BBBC00953B7C /* EnumsSUI.swift */,
+			);
+			path = SwiftUITodoList;
+			sourceTree = "<group>";
+		};
+		006CD4962A68302500B63924 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				006CD4972A68302500B63924 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		006EE5DD2A69BB1C00953B7C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				006CD4922A68302400B63924 /* ContentView.swift */,
+				006EE5DE2A69BB3700953B7C /* TodoItemRowSUI.swift */,
+				00C1FA902A6B3EF60019830F /* CustomDivider.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		0077F22D2A4A7772001EEE5C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +214,7 @@
 			children = (
 				00892DD92A3CAD3E00A9A510 /* TodoList */,
 				00892DF32A3CADAB00A9A510 /* TodoListTests */,
+				006CD48F2A68302400B63924 /* SwiftUITodoList */,
 				00892DD82A3CAD3E00A9A510 /* Products */,
 				BE5C0D3D5AB00AAD571DCD83 /* Pods */,
 				F3FEDB29D423531407121961 /* Frameworks */,
@@ -172,6 +226,7 @@
 			children = (
 				00892DD72A3CAD3E00A9A510 /* TodoList.app */,
 				00892DF22A3CADAB00A9A510 /* TodoListTests.xctest */,
+				006CD48E2A68302400B63924 /* SwiftUITodoList.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,6 +293,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		006CD48D2A68302400B63924 /* SwiftUITodoList */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 006CD49B2A68302500B63924 /* Build configuration list for PBXNativeTarget "SwiftUITodoList" */;
+			buildPhases = (
+				006CD48A2A68302400B63924 /* Sources */,
+				006CD48B2A68302400B63924 /* Frameworks */,
+				006CD48C2A68302400B63924 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftUITodoList;
+			productName = SwiftUITodoList;
+			productReference = 006CD48E2A68302400B63924 /* SwiftUITodoList.app */;
+			productType = "com.apple.product-type.application";
+		};
 		00892DD62A3CAD3E00A9A510 /* TodoList */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00892DEB2A3CAD3F00A9A510 /* Build configuration list for PBXNativeTarget "TodoList" */;
@@ -290,6 +362,9 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					006CD48D2A68302400B63924 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 					00892DD62A3CAD3E00A9A510 = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -317,12 +392,22 @@
 			projectRoot = "";
 			targets = (
 				00892DD62A3CAD3E00A9A510 /* TodoList */,
+				006CD48D2A68302400B63924 /* SwiftUITodoList */,
 				00892DF12A3CADAB00A9A510 /* TodoListTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		006CD48C2A68302400B63924 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00C1FA922A6B4AD30019830F /* Assets.xcassets in Resources */,
+				006CD4982A68302500B63924 /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00892DD52A3CAD3E00A9A510 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -407,6 +492,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		006CD48A2A68302400B63924 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				006EE5E12A69BB9B00953B7C /* TodoItemForSUI.swift in Sources */,
+				006EE5DF2A69BB3700953B7C /* TodoItemRowSUI.swift in Sources */,
+				00C1FA912A6B3EF60019830F /* CustomDivider.swift in Sources */,
+				006CD4932A68302400B63924 /* ContentView.swift in Sources */,
+				006EE5E32A69BBBC00953B7C /* EnumsSUI.swift in Sources */,
+				006CD4912A68302400B63924 /* SwiftUITodoListApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00892DD32A3CAD3E00A9A510 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -466,6 +564,64 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		006CD4992A68302500B63924 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftUITodoList/Preview Content\"";
+				DEVELOPMENT_TEAM = 5KF453B7JU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yandex.SwiftUITodoList;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		006CD49A2A68302500B63924 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftUITodoList/Preview Content\"";
+				DEVELOPMENT_TEAM = 5KF453B7JU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yandex.SwiftUITodoList;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		00892DE92A3CAD3F00A9A510 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -681,6 +837,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		006CD49B2A68302500B63924 /* Build configuration list for PBXNativeTarget "SwiftUITodoList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				006CD4992A68302500B63924 /* Debug */,
+				006CD49A2A68302500B63924 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		00892DD22A3CAD3E00A9A510 /* Build configuration list for PBXProject "TodoList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
